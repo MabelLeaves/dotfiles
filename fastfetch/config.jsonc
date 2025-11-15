@@ -16,7 +16,10 @@
 	"packages",
 	"separator",
 
-	"host",
+	{
+		"type": "host",
+		"format": "{vendor} {family} 13"
+	},
 	"cpu",
 	"gpu",
 	"memory",

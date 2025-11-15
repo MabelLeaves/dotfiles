@@ -26,6 +26,11 @@ output "EDP-1" {
     variable-refresh-rate on-demand=true
 }
 
+output "HDMI-A-1" {
+    mode "1920x1080@60"
+    scale 1.0
+}
+
 environment {
     LD_PRELOAD ""
     MOZ_ENABLE_WAYLAND "1"
@@ -52,9 +57,8 @@ layer-rule {
 }
 
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "qs"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swww-daemon"
 spawn-at-startup "mpd"
 
 prefer-no-csd
@@ -64,6 +68,14 @@ hotkey-overlay {
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    // Uncomment to turn off all animations.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+}
 
 window-rule {
     match app-id="^(steam_app_.*)$"
@@ -84,20 +96,29 @@ window-rule {
 
 window-rule {
     match app-id="^(.*firefox)"
+	match app-id="^(.*Darktable)"
+	match app-id="^(.*gimp)"
+	match app-id="^(.*zoom)"
     match app-id="^(.*Thunderbird)"
-    default-column-width { proportion 1.0; }
+	match app-id="^(.*FreeCAD)"
+    match app-id="^(.*BambuStudio)"
+	match app-id="^(.*chromium*)"
+	match app-id="^(.*Inkscape)"
+	default-column-width { proportion 1.0; }
 }
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T { spawn "kitty"; }
-    Mod+D { spawn "qs" "ipc" "call" "globalIPC" "toggleLauncher"; }
+    Mod+D { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+C hotkey-overlay-title="Run color picker script" { spawn "~/.Scripts/colorPicker.sh"; }
     Mod+E { spawn "nautilus"; }
-    Super+Alt+L { spawn "qs" "ipc" "call" "globalIPC" "toggleLock"; }
+	Mod+W { spawn "firefox" ; }
+	Mod+S {spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
+    Mod+Alt+S { spawn "~/.Scripts/lock.sh"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 	XF86AudioPlay		 allow-when-locked=true { spawn "playerctl" "play-pause"; }
@@ -258,8 +279,9 @@ layout {
     }
 
 	border {
-		width 2
-		active-color "#eff6e9"
-		inactive-color "#1fa5b7"
+		width 3
+		// active-color "#eff6e9"
+		inactive-color "#333333"
+		active-color "#5c7457"
 	}
 }

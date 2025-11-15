@@ -2,7 +2,7 @@
   font-family: Agave;
   font-weight: 800;
   color: #93a8ac;
-  font-size:medium;
+  font-size: medium;
 }
 
 window#waybar {
@@ -11,14 +11,6 @@ window#waybar {
 
 .module {
   background-color: #4d5b4a;
-  border-radius: 5px;
-  border-width: 2px;
-  border-color: #93a8ac;
-  border-style: solid;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 6px;
-  margin-bottom: 0px;
 }
 
 .module#workspaces button {
