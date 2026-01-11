@@ -31,35 +31,17 @@ output "HDMI-A-1" {
     scale 1.0
 }
 
-environment {
-    LD_PRELOAD ""
-    MOZ_ENABLE_WAYLAND "1"
-    XDG_SESSION_TYPE "wayland"
-    XDG_CURRENT_DESKTOP "niri"
-    XDG_SESSION_DESKTOP "niri"
-    MOZ_DBUS_REMOTE "1"
-    GDK_BACKEND "wayland"
-    QT_AUTO_SCREEN_SCALE_FACTOR "1"
-    QT_WAYLAND_FORCE_DPI "physical"
-    EGL_PLATFORM "wayland"
-    CLUTTER_BACKEND "wayland"
-    TERM "kitty"
-    TERMINAL "kitty"
-     _JAVA_AWT_WM_NONREPARENTING "1"
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-    QT_QPA_PLATFORMTHEME "qt6ct"
-    DISPLAY ":0.0"
-}
-
 layer-rule {
     match namespace="^swww-daemon$"
     place-within-backdrop true
 }
 
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "mpd"
+spawn-at-startup "ironbar"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww" "img" "-t" "none" "/home/mabel/Pictures/Wallpapers/Electronic_Murderer.webp"
 
 prefer-no-csd
 
@@ -110,11 +92,11 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T { spawn "kitty"; }
-    Mod+D { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Mod+C hotkey-overlay-title="Run color picker script" { spawn "~/.Scripts/colorPicker.sh"; }
-    Mod+E { spawn "nautilus"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+C { spawn "~/.Scripts/colorPicker.sh"; }
+    Mod+E { spawn "kitty" "-o" "confirm_os_window_close=0" "sh" "-c" "yazi"; }
 	Mod+W { spawn "firefox" ; }
-	Mod+S {spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
+	Mod+S {spawn "swaylock"; }
     Mod+Alt+S { spawn "~/.Scripts/lock.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
