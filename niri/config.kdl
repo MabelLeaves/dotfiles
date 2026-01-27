@@ -78,26 +78,28 @@ window-rule {
 
 window-rule {
     match app-id="^(.*firefox)"
-	match app-id="^(.*Darktable)"
-	match app-id="^(.*gimp)"
-	match app-id="^(.*zoom)"
+    match app-id="^(.*Darktable)"
+    match app-id="^(.*gimp)"
+    match app-id="^(.*zoom)"
     match app-id="^(.*Thunderbird)"
-	match app-id="^(.*FreeCAD)"
+    match app-id="^(.*FreeCAD)"
     match app-id="^(.*BambuStudio)"
-	match app-id="^(.*chromium*)"
-	match app-id="^(.*Inkscape)"
-	default-column-width { proportion 1.0; }
+    match app-id="^(.*chromium*)"
+    match app-id="^(.*Inkscape)"
+    match app-id="org.musicbrainz.Picard"
+
+    default-column-width { proportion 1.0; }
 }
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
-    Mod+C { spawn "~/.Scripts/colorPicker.sh"; }
+    Mod+C { spawn "~/.scripts/colorPicker.sh"; }
     Mod+E { spawn "kitty" "-o" "confirm_os_window_close=0" "sh" "-c" "yazi"; }
 	Mod+W { spawn "firefox" ; }
 	Mod+S {spawn "swaylock"; }
-    Mod+Alt+S { spawn "~/.Scripts/lock.sh"; }
+    Mod+Alt+S { spawn "~/.scripts/lock.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
