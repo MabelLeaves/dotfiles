@@ -1,0 +1,43 @@
+let {
+	$workspaces = {
+		type = "workspaces"
+	}
+
+	$music = {
+		type = "music"
+		player_type = "mpris"
+		marquee.enable = true
+		marquee.max_length = 10
+	}
+
+	$focused = {
+		type = "focused"
+		icon_size = 16
+		truncate = "middle"
+	}
+
+	$tray = {
+		type = "tray"
+	}
+	
+	$battery = {
+		type = "battery"
+		show_icon = false
+		format = "{percentage}% {state}"
+	}
+
+	$clock = {
+		type = "clock"
+		format = "%D %I:%M"
+	}
+}
+
+in {
+	icon_theme = "Adwaita"
+	position = "top"
+	height = 24
+
+	start = [ $workspaces $music ]
+	center = [ $focused ]
+	end = [ $tray $battery $clock ]
+}

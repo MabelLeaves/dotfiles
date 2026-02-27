@@ -1,0 +1,59 @@
+* {
+	font-family: agave;
+	font-size: 1.2rem;
+	font-weight: 100;
+	background-color: transparent;
+	background-image: none;
+	outline: none;
+}
+popover {
+	background-color: #1c1c1ceb;
+	border-radius: 25px;
+	border: #7B5B8C solid 3px;
+}
+
+#bar {
+	margin: 5px;
+	margin-bottom: 0px;
+	color: #D8CCC0;
+}
+
+#start .widget {
+	margin-right: 5px;
+}
+
+#end .widget {
+	margin-left: 5px;
+}
+
+.widget {
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #1c1c1ceb;
+	border: #7B5B8C solid 3px;
+}
+
+.workspaces .item {
+	background-color: transparent;
+	color: transparent;
+	padding: 5px;
+	border: none;
+}
+
+.workspaces .item.focused {
+	color: #D8CCC0;
+}
+
+.workspaces .item:hover {
+	color: #D8CCC0;
+	transition: 0.3s ease;
+}
+
+.popup-music .volume .icon {
+	margin-left: 3px;
+}
+
+.popup-clock .calendar .today {
+	color: #7B5B8C;
+}
