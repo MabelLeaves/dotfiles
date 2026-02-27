@@ -26,9 +26,9 @@ output "EDP-1" {
     variable-refresh-rate on-demand=true
 }
 
-output "HDMI-A-1" {
-    mode "1920x1080@60"
-    scale 1.0
+output "DP-3" {
+    mode "1920x1080@100"
+    scale 0.9
 }
 
 layer-rule {
@@ -42,6 +42,7 @@ spawn-at-startup "mpd"
 spawn-at-startup "ironbar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "swww" "img" "-t" "none" "/home/mabel/Pictures/Wallpapers/Electronic_Murderer.webp"
+spawn-at-startup "mpd-mpris"
 
 prefer-no-csd
 
@@ -77,7 +78,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="^(.*firefox)"
+    match app-id="^(.*librewolf)"
     match app-id="^(.*Darktable)"
     match app-id="^(.*gimp)"
     match app-id="^(.*zoom)"
@@ -96,10 +97,11 @@ binds {
     Mod+T { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+C { spawn "~/.scripts/colorPicker.sh"; }
-    Mod+E { spawn "kitty" "-o" "confirm_os_window_close=0" "sh" "-c" "yazi"; }
-	Mod+W { spawn "firefox" ; }
+    Mod+E { spawn "kitty" "-o" "confirm_os_window_close=0" "yazi"; }
+	Mod+W { spawn "librewolf" ; }
 	Mod+S {spawn "swaylock"; }
     Mod+Alt+S { spawn "~/.scripts/lock.sh"; }
+    Shift+Mod+D { spawn "~/.scripts/define.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
@@ -108,7 +110,7 @@ binds {
 	XF86AudioPlay		 allow-when-locked=true { spawn "playerctl" "play-pause"; }
 	XF86AudioNext		 allow-when-locked=true { spawn "playerctl" "next"; }
 	XF86AudioPrev		 allow-when-locked=true { spawn "playerctl" "previous"; }
-	XF86AudioMedia		 allow-when-locked=false { spawn "kitty" "-o" "confirm_os_window_close=0" "sh" "-c" "rmpc"; }
+	XF86AudioMedia		 allow-when-locked=false { spawn "kitty" "-o" "confirm_os_window_close=0" "rmpc"; }
 
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
@@ -264,8 +266,7 @@ layout {
 
 	border {
 		width 3
-		// active-color "#eff6e9"
 		inactive-color "#333333"
-		active-color "#5c7457"
+		active-color "#7B5B8C"
 	}
 }
