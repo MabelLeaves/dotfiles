@@ -24,15 +24,17 @@ output "EDP-1" {
     mode "2256x1504@60"
     scale 1
     variable-refresh-rate on-demand=true
+    position x=0 y=1600
 }
 
 output "DP-3" {
-    mode "1920x1080@100"
+    mode "2560x1440@143.912"
+    position x=0 y=0
     scale 0.9
 }
 
 layer-rule {
-    match namespace="^swww-daemon$"
+    match namespace="awww-daemon"
     place-within-backdrop true
 }
 
@@ -40,8 +42,8 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "mpd"
 spawn-at-startup "ironbar"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "swww" "img" "-t" "none" "/home/mabel/Pictures/Wallpapers/Electronic_Murderer.webp"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "awww" "img" "-t" "none" "/home/mabel/Pictures/Wallpapers/Electronic_Murderer.webp"
 spawn-at-startup "mpd-mpris"
 
 prefer-no-csd
