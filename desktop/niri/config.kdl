@@ -7,9 +7,10 @@
       numlock
     }
 
-    mouse {
+    /*mouse {
+      accel-profile flat
       accel-speed 0.01
-    }
+    }*/
   }
 
   output "DP-2" {
@@ -94,6 +95,12 @@
     match app-id="org.musicbrainz.Picard"
 
     default-column-width { proportion 1.0; }
+  }
+
+// Minecraft
+  window-rule {
+    match app-id="^(Minecraft*[0-9]*)"
+    open-fullscreen true
   }
 
 // Steam
