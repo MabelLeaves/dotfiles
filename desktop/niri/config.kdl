@@ -78,7 +78,7 @@
   // Start desktop essentials
   spawn-at-startup "ironbar"
   spawn-at-startup "awww-daemon"
-  spawn-at-startup "awww" "img" "-t" "none" "/home/mabel/Pictures/Wallpapers/gris.jpg"
+  spawn-at-startup "awww" "img" "-t" "none" "~/Pictures/Wallpapers/ART002-E-11574.JPG"
 
   // Start Music Player Daemon and MPRIS integration
   spawn-at-startup "mpd"

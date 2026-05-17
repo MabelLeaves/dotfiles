@@ -5,6 +5,7 @@
 # Assumes the directory is called "Wallpapers"
 # Always chooses a new wallpaper when run, never the same one twice in a row
 
+if [ $(pgrep -x awww-daemon) ]; then
 directory="/home/mabel/Pictures/Wallpapers/" # Where the wallpapers are located
 
 # Get the currently set wallpaper
@@ -18,3 +19,6 @@ echo -e "The new wallpaper is:\t\t\x1b[32m$new_wallpaper\x1b[0m\n"
 
 # Set the new wallpaper
 awww img -t random $directory$new_wallpaper
+else
+	echo "Doing nothing since awww-daemon is not running"
+fi
