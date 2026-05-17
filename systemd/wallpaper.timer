@@ -1,0 +1,6 @@
+[Unit]
+Description=Run wallpaper.service every ten minutes
+
+[Timer]
+OnActiveSec=10min
+OnUnitActiveSec=10min

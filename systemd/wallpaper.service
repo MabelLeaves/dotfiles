@@ -1,0 +1,5 @@
+[Unit]
+Description=Choose a random wallpaper to use with AWWW
+
+[Service]
+ExecStart=/home/mabel/.scripts/wallpaper.sh
